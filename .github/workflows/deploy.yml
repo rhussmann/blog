@@ -1,0 +1,37 @@
+on: ["push"]
+
+jobs:
+  deploy_blog:
+    runs-on: ubuntu-latest
+    name: Deploy blog.rhussmann.com
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: true
+          fetch-depth: 0
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.81.0'
+
+      - name: Build
+        run: hugo --minify
+
+      - name: Deploy static site
+        uses: rhussmann/static-site-deploy-action@main
+        id: deploy
+        with:
+          wireguard-private-key: ${{ secrets.CTX_WIREGUARD_PRIVATE_KEY }}
+          wireguard-server-public-key: ${{ secrets.CTX_WIREGUARD_SERVER_PUBLIC_KEY }}
+          wireguard-server-endpoint: ${{ secrets.CTX_WIREGUARD_SERVER_ENDPOINT }}
+          ssh-key: ${{ secrets.CTX_SERVER_DEPLOY_SECRET }}
+          domain-name: blog.rhussmann.com
+          short-name: blog.rhussmann.com
+          kong-host: 192.168.11.103
+          kong-port: 8001
+          ssh-host: 192.168.11.103
+          ssh-user: rhussmann
+          deploy-assets: ./public/*
+          kong-nginx-service-name: local_nginx

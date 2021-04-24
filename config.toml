@@ -1,0 +1,4 @@
+baseURL = "https://blog.rhussmann.com/"
+languageCode = "en-us"
+title = "blog.rhussmann.com"
+theme = "charaka"
