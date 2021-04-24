@@ -28,7 +28,7 @@ jobs:
           wireguard-server-endpoint: ${{ secrets.CTX_WIREGUARD_SERVER_ENDPOINT }}
           ssh-key: ${{ secrets.CTX_SERVER_DEPLOY_SECRET }}
           domain-name: blog.rhussmann.com
-          short-name: blog.rhussmann.com
+          short-name: blog_rhussmann_com
           kong-host: 192.168.11.103
           kong-port: 8001
           ssh-host: 192.168.11.103
