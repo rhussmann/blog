@@ -53,32 +53,32 @@ exit
 
 Taking it piece-by-piece:
 
-```
+```bash
 wg genkey | tee /config/auth/wg.key | wg pubkey >  wg.public
 ```
 
 This generates the servers public and private keys. The private key saved in `/config/auth/wg.key` and the public key is derived from the private key and stored as `wg.public` in the current directory. That's it! No certificate authority to configure, no serverside certificates to generate and maintain, no OpenSSL CLI syntax to remember. This command alone generates the server's key-pair. This is at least 1000 times better than OpenVPN's complex certificiate-based authentication setup.
 
-```
+```bash
 configure
 ```
 
 This enters configuration mode on the ER-X.
 
-```
+```bash
 set interfaces wireguard wg0 address 192.168.33.1/24
 ```
 
 Okay, so this is where I originally got confused. This part of the config sets the VPN address for the server, and the netmask. This doesn't need to match your subnet for your existing wired network (and probably shouldn't). `192.168.33.1/24` sets the WireGuard server IP address to `192.168.33.1` and treats all `192.168.33.X` addresses as valid VPN addresses. In my case, I changed this to `10.0.0.1/24` (server address of `10.0.0.1` with valid VPN addresses of `10.0.0.X`).
 
-```
+```bash
 set interfaces wireguard wg0 listen-port 51820
 set interfaces wireguard wg0 route-allowed-ips true
 ```
 
 Just taking these two at the same time. These lines conigure the WireGuard server to listen on port `51820` and will automatically route allowed IPs (covered below, when peers are described). I'm not 100% sure about this, but if you set `route-allowed-ips` to `false`, you'll explicitly need to add routes for your VPN connections. I left this as `true`.
 
-```
+```bash
 set interfaces wireguard wg0 peer GIPWDet2eswjz1JphYFb51sh6I+CwvzOoVyD7z7kZVc= endpoint example1.org:29922
 set interfaces wireguard wg0 peer GIPWDet2eswjz1JphYFb51sh6I+CwvzOoVyD7z7kZVc= allowed-ips 192.168.33.101/32
 ```
@@ -90,13 +90,13 @@ One note, here. You need not configure the `endpoint`. If you're using WireGuard
 I'm going to skip the other peer configs as they're just additional examples of the same configuration.
 
 
-```
+```bash
 set interfaces wireguard wg0 private-key /config/auth/wg.key
 ```
 
 Pretty straightforward; this just sets the private key for the server (which was generated in the first step above).
 
-```
+```bash
 set firewall name WAN_LOCAL rule 20 action accept
 set firewall name WAN_LOCAL rule 20 protocol udp
 set firewall name WAN_LOCAL rule 20 description 'WireGuard'
@@ -105,7 +105,7 @@ set firewall name WAN_LOCAL rule 20 destination port 51820
 
 This adds a firewall rule to the WAN interface to allow incoming UDP traffic on port 51820.
 
-```
+```bash
 commit
 save
 exit
@@ -115,7 +115,7 @@ Also pretty self-explainatory, this commits the config changes to the ER-X, pers
 
 That's all there is to configuring the server. The last bit of the puzzle is the client configuration. I won't go into any detail about how to install WireGuard on your computer (or phone or tablet); that's covered pretty well elsewhere.
 
-```
+```bash
 [Interface]
 PrivateKey = A_PRIVATE_KEY
 Address = 192.168.33.101/32
