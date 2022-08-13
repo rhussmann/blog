@@ -31,4 +31,4 @@ jobs:
           aws-region: us-east-1
 
       - name: Copy assets to S3
-        run: aws s3 cp ./public/* s3://
+        run: aws s3 sync ./public/ s3://rhussmann.com/
