@@ -1,4 +1,8 @@
+name: Deploy
 on: ["push"]
+permissions:
+  id-token: write
+  contents: read
 
 jobs:
   deploy_blog:
@@ -19,19 +23,12 @@ jobs:
       - name: Build
         run: hugo --minify
 
-      - name: Deploy static site
-        uses: rhussmann/static-site-deploy-action@main
-        id: deploy
+      - name: configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v1
         with:
-          wireguard-private-key: ${{ secrets.CTX_WIREGUARD_PRIVATE_KEY }}
-          wireguard-server-public-key: ${{ secrets.CTX_WIREGUARD_SERVER_PUBLIC_KEY }}
-          wireguard-server-endpoint: ${{ secrets.CTX_WIREGUARD_SERVER_ENDPOINT }}
-          ssh-key: ${{ secrets.CTX_SERVER_DEPLOY_SECRET }}
-          domain-name: blog.rhussmann.com
-          short-name: blog_rhussmann_com
-          kong-host: 192.168.11.103
-          kong-port: 8001
-          ssh-host: 192.168.11.103
-          ssh-user: rhussmann
-          deploy-assets: ./public/*
-          kong-nginx-service-name: local_nginx
+          role-to-assume: arn:aws:iam::140106038064:role/GithubActionsRole
+          role-session-name: samplerolesession
+          aws-region: us-east-1
+
+      - name: Copy assets to S3
+        run: s3 cp ./public/* s3://
