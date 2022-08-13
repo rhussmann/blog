@@ -1,6 +1,6 @@
-baseURL = "https://blog.rhussmann.com/"
+baseURL = "https://rhussmann.com/"
 languageCode = "en-us"
-title = "blog.rhussmann.com"
+title = "rhussmann.com"
 theme = "charaka"
 googleAnalytics = "G-N56GF8L37Z"
 
