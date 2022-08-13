@@ -1,4 +1,4 @@
-baseURL = "https://rhussmann.com/"
+baseURL = "https://rhussmann.com"
 languageCode = "en-us"
 title = "rhussmann.com"
 theme = "charaka"
