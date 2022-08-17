@@ -3,3 +3,6 @@
 
 # Hugo generated public site
 public/
+
+# Hugo build lockfile
+.hugo_build.lock
