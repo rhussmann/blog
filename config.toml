@@ -4,6 +4,9 @@ title = "rhussmann.com"
 theme = "charaka"
 googleAnalytics = "G-N56GF8L37Z"
 
+[markup.goldmark.renderer]
+  unsafe = true
+
 [params]
 
 [[params.social]]
