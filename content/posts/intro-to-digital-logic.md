@@ -8,6 +8,16 @@ Have you ever wanted to know how computers work? Not the software; the Facebooks
 
 This is the first of series of blog posts to help answer some of the fundamental questions. Of the course of these posts, we're going to explore the building-blocks of how computers work. We'll start with digital logic gates (don't worry, digital logic gates will be explained later) and learn about each gate's behavior, and how they can be combined to build larger building-blocks. We'll use these building blocks to explain some electronic devices. Ultimately, we'll build and design a CPU that executes a set of CPU instructions that we will implement.
 
-At the end of this series, you'll have foundational understanding of how not only computers work, but also electrical components that exist outside of computers as well like timers, IoT devices, microcontrollers; all kinds of electronic devices.
+At the end of this series, you'll have foundational understanding of how not only computers work, but also electrical components that exist outside of computers; timers, microcontrollers, and IoT devices. Through the process, we'll cover the following topics:
 
-<a href="https://google.com">THIS IS GOOGLE</a>
+* Introduction to basic logic gates and their functions
+* Modeling digital problems (e.g. defining truth tables)
+* Analyzing and transforming truth tables into digital logic circuits
+  * Notation
+* Optimization / simplification techniques (Karnaugh maps)
+* Higher-level digital logic components
+  * Adders
+  * Latches
+  * Flip-flops
+* Sequential vs. combinatorial logic
+* State machines
