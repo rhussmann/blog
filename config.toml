@@ -16,3 +16,7 @@ googleAnalytics = "G-N56GF8L37Z"
 [[params.social]]
   url = "https://github.com/rhussmann"
   fa_icon = "fab fa-github"
+
+[[params.social]]
+  url = "https://mastodon.social/@rhussmann"
+  fa_icon = "fab fa-mastodon"
