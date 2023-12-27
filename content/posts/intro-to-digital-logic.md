@@ -21,3 +21,5 @@ At the end of this series, you'll have foundational understanding of how not onl
   * Flip-flops
 * Sequential vs. combinatorial logic
 * State machines
+
+{{<lead_form>}}

@@ -6,3 +6,6 @@ public/
 
 # Hugo build lockfile
 .hugo_build.lock
+
+# OSX
+.DS_Store
