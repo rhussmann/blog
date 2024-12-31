@@ -6,7 +6,7 @@ permissions:
 
 jobs:
   deploy_blog:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     name: Deploy blog.rhussmann.com
     steps:
       - name: Checkout
