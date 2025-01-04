@@ -1,10 +1,14 @@
 baseURL = "https://rhussmann.com"
 languageCode = "en-us"
 title = "rhussmann.com"
-theme = "charaka"
+theme = "hugo-kiera"
 googleAnalytics = "G-N56GF8L37Z"
 
-[params]
+[params.author]	
+  name = "Ricky Hussmann"
+  github = "rhussmann"
+  linkedin = "rhussmann"
+  mastodon = "mastodon.social/@rhussmann"
 
 [[params.social]]
   url = "https://twitter.com/rhussmann"
