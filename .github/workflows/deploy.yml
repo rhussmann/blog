@@ -24,10 +24,9 @@ jobs:
         run: hugo --minify
 
       - name: configure aws credentials
-        uses: aws-actions/configure-aws-credentials@v1
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: arn:aws:iam::140106038064:role/GithubActionsRole
-          role-session-name: samplerolesession
           aws-region: us-east-1
 
       - name: Copy assets to S3
