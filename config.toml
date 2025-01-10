@@ -9,15 +9,3 @@ googleAnalytics = "G-N56GF8L37Z"
   github = "rhussmann"
   linkedin = "rhussmann"
   mastodon = "mastodon.social/@rhussmann"
-
-[[params.social]]
-  url = "https://twitter.com/rhussmann"
-  fa_icon = "fab fa-twitter"
-
-[[params.social]]
-  url = "https://github.com/rhussmann"
-  fa_icon = "fab fa-github"
-
-[[params.social]]
-  url = "https://mastodon.social/@rhussmann"
-  fa_icon = "fab fa-mastodon"
